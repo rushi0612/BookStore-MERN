@@ -1,5 +1,6 @@
 import express from "express";
-import {PORT } from "./config.js";
+import {PORT, MONGODB_URL } from "./config.js";
+import mongoose from "mongoose";
 
 const app = express();
 
@@ -8,6 +9,17 @@ app.get('/', (request, response) =>{
     return response.status(234).send('welcome to Mern Stack Backend');
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+
+mongoose
+    .connect(MONGODB_URL)
+    .then(()=>{
+        console.log("App Connected to MongoDB Database");
+        app.listen(PORT, () => {
+        console.log(`Server is running on port ${PORT}`);
+});
+ try {
+    
+ } catch (error) {
+    console.log(error) 
+ }
 });
