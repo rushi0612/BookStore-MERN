@@ -41,7 +41,7 @@ router.get('/', async (request, response) => {
 });
 
 //route to get one book from database by id
-router.get('//:id', async (request, response) => {
+router.get('/:id', async (request, response) => {
     try {
         const { id } = request.params;
         const book = await Book.findById(id);
